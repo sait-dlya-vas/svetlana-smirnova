@@ -1,0 +1,162 @@
+/* =========================================================
+   Бренд: Светлана Смирнова – семейный фотограф в Омске
+   Источник: сайт https://smirnovasph.ru/ (собрано 01.10.2026)
+
+   Как подключить к новому сайту:
+   <link rel="stylesheet" href="brand.css">
+   и дальше использовать переменные, например:
+   color: var(--brand-accent);
+   ========================================================= */
+
+/* Шрифты бренда (бесплатные, с Google Fonts) */
+@import url("https://fonts.googleapis.com/css2?family=Forum&family=Ubuntu:ital,wght@0,400;0,700;1,400&display=swap");
+
+:root {
+  /* --- Цвета сайта --- */
+  --brand-accent: #aa8d74;       /* Кофе с молоком – кнопки, ссылки, акценты */
+  --brand-accent-light: #c4a88a; /* Светлый оттенок для переливания */
+  --brand-accent-darker: #9a7d64; /* Ещё темнее для эффектов */
+  --brand-text: #1e1e1e;         /* Графит – основной текст и заголовки */
+  --brand-bg: #ffffff;           /* Белый – основной фон */
+  --brand-bg-soft: #f3f2f0;      /* Светлый лён – фон выделенных блоков */
+
+  /* --- Цвета логотипа --- */
+  --brand-powder: #e2cdc1;       /* Пудровый – «пятно» в логотипе */
+  --brand-cocoa: #574444;        /* Какао – надпись в логотипе */
+
+  /* --- Производные (как на сайте) --- */
+  --brand-border: #aa8d7440;     /* Тонкие линии – акцент с прозрачностью 25% */
+  --brand-button-text: #ffffff;  /* Текст на кнопках */
+  --brand-accent-dark: #6b5a47;  /* Тёмный оттенок для текста с лучшим контрастом */
+
+  /* --- Шрифты --- */
+  --brand-font-heading: "Forum", Georgia, serif;   /* Заголовки h1–h4 */
+  --brand-font-text: "Ubuntu", Arial, sans-serif;  /* Основной текст, кнопки, меню */
+}
+
+/* Базовые стили – как на сайте */
+body {
+  font-family: var(--brand-font-text);
+  font-weight: 400;
+  color: var(--brand-text);
+  background: var(--brand-bg);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--brand-font-heading);
+  font-weight: 400;
+}
+
+a {
+  color: var(--brand-accent);
+}
+
+/* Кнопка в стиле бренда – скруглённая «таблетка» с мелкими заглавными буквами, как на сайте */
+.brand-button {
+  display: inline-block;
+  min-width: 140px;
+  padding: 18px 34px;
+  font-family: var(--brand-font-text);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--brand-button-text);
+  background: linear-gradient(-45deg, #c4a88a 0%, #aa8d74 25%, #9a7d64 50%, #aa8d74 75%, #c4a88a 100%);
+  background-size: 300% 300%;
+  border: none;
+  border-radius: 100px;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(170, 141, 116, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+}
+
+.brand-button:hover {
+  animation: gradient-shift 2s ease infinite;
+  box-shadow: 0 8px 25px rgba(170, 141, 116, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.brand-button:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 0 4px 12px rgba(170, 141, 116, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Ripple эффект при клике */
+.brand-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 70%, transparent 100%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.brand-button:active::after {
+  animation: ripple 0.5s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  to {
+    width: 400px;
+    height: 400px;
+    opacity: 0;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.brand-button--outline {
+  color: var(--brand-accent-dark);
+  background: transparent;
+  box-shadow: inset 0 0 0 2px var(--brand-accent-dark);
+}
+
+.brand-button--outline:hover {
+  background: rgba(170, 141, 116, 0.05);
+  box-shadow: inset 0 0 0 2px var(--brand-accent-dark), 0 4px 12px rgba(170, 141, 116, 0.2);
+  animation: none;
+}
+
+.brand-button--outline:active {
+  box-shadow: inset 0 0 0 2px var(--brand-accent-dark), 0 2px 6px rgba(170, 141, 116, 0.15);
+}
+
+/* Мобильные размеры кнопок */
+@media (max-width: 768px) {
+  .brand-button {
+    font-size: 14px;
+    padding: 16px 28px;
+  }
+}
