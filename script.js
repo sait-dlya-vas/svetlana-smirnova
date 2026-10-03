@@ -2,30 +2,6 @@
 (function() {
   'use strict';
 
-  // Закрытие мобильного меню при клике на ссылку
-  const mobileNavLinks = document.querySelectorAll('.mobile-nav a, .mobile-button');
-
-  mobileNavLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      // При клике на ссылку можно добавить небольшой фокус или аналитику
-      // В данном случае ничего специального не нужно – браузер автоматически прокрутит к якорю
-    });
-  });
-
-  // Обработка кнопки "Записаться" в шапке
-  const headerButton = document.querySelector('.brand-button');
-  if (headerButton) {
-    headerButton.addEventListener('click', function(e) {
-      // При необходимости добавить аналитику или другую логику
-    });
-  }
-
-  // Плавный скролл для старых браузеров (если scroll-behavior не поддерживается)
-  if (!CSS.supports('scroll-behavior', 'smooth')) {
-    // Эта логика может быть добавлена, если нужна поддержка старых браузеров
-    // Но в 2026 году это уже не критично
-  }
-
   // Отслеживание видимых разделов (для подсвечивания активного пункта меню)
   const sections = document.querySelectorAll('[id]');
   const navLinks = document.querySelectorAll('.nav a');
